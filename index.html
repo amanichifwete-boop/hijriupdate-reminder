@@ -2,11 +2,133 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hijri Update</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hijri Update — Daily Hijri Date Reminder</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f9fafb;
+    }
+
+    /* Header */
+    .header {
+      background: #0b5;
+      color: white;
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* Hamburger button */
+    .hamburger {
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    /* Mobile menu */
+    .menu {
+      display: none;
+      background: white;
+      padding: 15px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .menu a {
+      display: block;
+      padding: 10px 0;
+      color: #111;
+      text-decoration: none;
+    }
+
+    /* Hero section */
+    .hero {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: #444;
+      font-size: 16px;
+      margin-top: 0;
+    }
+
+    /* Form embed container */
+    .form-container {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: #666;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+  </style>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+  </script>
 </head>
+
 <body>
-  <h1>Hijri Update Landing Page</h1>
-  <p>This is a placeholder page. The full modern design will be added next.</p>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">Hijri Update</div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="menu">
+    <a href="https://privacy.hijriupdate.site">Privacy Policy</a>
+    <a href="#">About Us (coming soon)</a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Daily Hijri Date Reminder</h1>
+    <p>Subscribe for a clean, simple daily Hijri date message delivered to your WhatsApp.</p>
+    <p>Delivery time: <strong>06:30 AM East Africa Time</strong></p>
+  </section>
+
+  <!-- Google Form Embed Area -->
+  <div class="form-container">
+    <!-- Replace below with your real Google Form embed URL -->
+    <iframe 
+      src="https://docs.google.com/forms/d/e/YOUR-FORM-ID/viewform?embedded=true" 
+      width="100%" 
+      height="700" 
+      frameborder="0" 
+      marginheight="0" 
+      marginwidth="0">
+      Loading…
+    </iframe>
+  </div>
+
+  <div class="footer">
+    © 2025 Hijri Update. Built with ❤️ in East Africa.
+  </div>
+
 </body>
 </html>
