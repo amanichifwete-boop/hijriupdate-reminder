@@ -181,7 +181,106 @@
       display: block;
     }
 
-    /* Mobile adjustments */
+    /* M-PESA modal styles */
+    .mpesa-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 20000;
+      padding: 20px;
+    }
+
+    .mpesa-modal {
+      background: #fff;
+      max-width: 420px;
+      width: 100%;
+      border-radius: 12px;
+      padding: 20px 20px 18px;
+      box-shadow: 0 20px 60px rgba(3, 10, 10, 0.25);
+      position: relative;
+      text-align: left;
+      font-family: inherit;
+    }
+
+    .mpesa-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      border: none;
+      background: transparent;
+      font-size: 18px;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .mpesa-label {
+      display: block;
+      font-size: 13px;
+      color: #374151;
+      margin-top: 10px;
+      margin-bottom: 6px;
+    }
+
+    .mpesa-input {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #e6e6e6;
+      font-size: 15px;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    .mpesa-input:focus {
+      box-shadow: 0 0 0 4px rgba(6, 95, 70, 0.06);
+      border-color: #0fa97d;
+    }
+
+    .mpesa-message {
+      min-height: 22px;
+      margin-top: 10px;
+      font-weight: 600;
+      font-size: 13px;
+      color: #064e3b;
+      text-align: center;
+    }
+
+    .mpesa-pay-btn {
+      width: 100%;
+      margin-top: 12px;
+      background: #16A34A;
+      color: #fff;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: none;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .mpesa-spinner {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.35);
+      border-top-color: #ffffff;
+      animation: spin 0.85s linear infinite;
+      display: inline-block;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
     @media (max-width: 600px) {
       .hero h1 {
         font-size: 26px;
@@ -197,16 +296,6 @@
     }
   </style>
 
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById("mobileMenu");
-      menu.style.display = menu.style.display === "block" ? "none" : "block";
-    }
-
-    function toggleDonateMenu(id) {
-      document.getElementById(id).classList.toggle("open");
-    }
-  </script>
 </head>
 
 <body>
@@ -221,7 +310,7 @@
       <div class="donate-menu">
         <a href="https://www.paypal.com/donate/?hosted_button_id=JE95DUUDRRWVE" target="_blank">PayPal</a>
         <a href="https://buymeacoffee.com/brotheramani" target="_blank">Buy Me a Coffee</a>
-        <button onclick="window.location.href='#mpesa-info'; event.stopPropagation();">M-PESA</button>
+        <button onclick="event.stopPropagation(); openMpesaModal();">M-PESA</button>
       </div>
     </div>
 
@@ -257,18 +346,201 @@
       <div class="donate-menu">
         <a href="https://www.paypal.com/donate/?hosted_button_id=JE95DUUDRRWVE" target="_blank">PayPal</a>
         <a href="https://buymeacoffee.com/brotheramani" target="_blank">Buy Me a Coffee</a>
-        <button onclick="window.location.href='#mpesa-info'; event.stopPropagation();">M-PESA</button>
+        <button onclick="event.stopPropagation(); openMpesaModal();">M-PESA</button>
       </div>
     </div>
 
     <br><br>
-    © 2025 Hijri Update — built with Love❤️ & Powered By artsbyamani.com
+    © 2025 Hijri Update Live Calendar — built with Love❤️ & Powered By arts-by-amani
   </div>
 
-  <!-- M-PESA Placeholder (future modal integration) -->
-  <div id="mpesa-info" style="text-align:center; padding:40px 20px; color:#0fa97d;">
-    <strong>M-PESA donation modal coming soon…</strong>
+  <!-- M-PESA Modal -->
+  <div id="mpesa-modal" class="mpesa-modal-backdrop" style="display:none;" aria-hidden="true">
+    <div class="mpesa-modal">
+      <button class="mpesa-close" onclick="closeMpesaModal()">✕</button>
+
+      <h2 style="text-align:center; color:#0a3d3a; margin-top:5px;">Donate via M-PESA</h2>
+      <p style="text-align:center; font-size:13px; color:#4b5563;">Enter your Safaricom number and amount.</p>
+
+      <label class="mpesa-label">M-PESA Number</label>
+      <input id="mpesa-phone" class="mpesa-input" type="tel" placeholder="0712345678">
+
+      <label class="mpesa-label">Amount (KSh)</label>
+      <input id="mpesa-amount" class="mpesa-input" type="text" placeholder="100" inputmode="numeric">
+
+      <div id="mpesa-message" class="mpesa-message"></div>
+
+      <button id="mpesa-pay-btn" class="mpesa-pay-btn" onclick="startMpesaPayment()">
+        <span id="pay-text">Click to Donate</span>
+        <span id="mpesa-spinner" class="mpesa-spinner" style="display:none;"></span>
+      </button>
+
+    </div>
   </div>
+
+  <script>
+
+    function toggleMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+
+    function toggleDonateMenu(id) {
+      document.getElementById(id).classList.toggle("open");
+    }
+
+    /* ---------------- M-PESA MODAL UI HELPERS ---------------- */
+
+    function openMpesaModal() {
+      const box = document.getElementById('mpesa-modal');
+      box.style.display = 'flex';
+      box.setAttribute('aria-hidden', 'false');
+      setTimeout(() => document.getElementById('mpesa-phone').focus(), 120);
+    }
+
+    function closeMpesaModal() {
+      const box = document.getElementById('mpesa-modal');
+      box.style.display = 'none';
+      box.setAttribute('aria-hidden', 'true');
+      clearMpesaState();
+    }
+
+    function clearMpesaState() {
+      document.getElementById('mpesa-phone').value = '';
+      document.getElementById('mpesa-amount').value = '';
+      document.getElementById('mpesa-message').textContent = '';
+      document.getElementById('pay-text').textContent = 'Click to Donate';
+      document.getElementById('mpesa-spinner').style.display = 'none';
+      const btn = document.getElementById('mpesa-pay-btn');
+      btn.disabled = false;
+    }
+
+    /* ---------------- VALIDATION ---------------- */
+
+    function validatePhone(raw) {
+      let p = raw.replace(/\s+/g, '');
+      if (p.startsWith("0") && p.length === 10) return "254" + p.slice(1);
+      if (p.startsWith("254") && p.length === 12) return p;
+      return null;
+    }
+
+    function validateAmount(raw) {
+      const n = parseInt(raw, 10);
+      if (isNaN(n) || n < 1 || n > 500000) return null;
+      return n;
+    }
+
+    /* ---------------- PAY STATUS UI ---------------- */
+
+    function setProcessingState(isProcessing) {
+      const btn = document.getElementById('mpesa-pay-btn');
+      const spinner = document.getElementById('mpesa-spinner');
+      const text = document.getElementById('pay-text');
+      if (isProcessing) {
+        btn.disabled = true;
+        spinner.style.display = 'inline-block';
+        text.textContent = 'Processing…';
+      } else {
+        btn.disabled = false;
+        spinner.style.display = 'none';
+        text.textContent = 'Click to Donate';
+      }
+    }
+
+    function showMsg(msg, isError = false) {
+      const box = document.getElementById('mpesa-message');
+      box.style.color = isError ? "#b91c1c" : "#065f46";
+      box.textContent = msg;
+    }
+
+    /* ---------------- M-PESA PAYMENT LOGIC ---------------- */
+
+    let pollTimer = null;
+    let pollTimeout = null;
+
+    async function startMpesaPayment() {
+      const phoneRaw = document.getElementById('mpesa-phone').value;
+      const amountRaw = document.getElementById('mpesa-amount').value;
+
+      const phone = validatePhone(phoneRaw);
+      if (!phone) return showMsg("⚠ Enter valid Safaricom number.", true);
+
+      const amount = validateAmount(amountRaw);
+      if (!amount) return showMsg("⚠ Enter valid amount (1 - 500,000).", true);
+
+      showMsg("");
+      setProcessingState(true);
+
+      try {
+        const res = await fetch("https://stk-service-586039397295.us-west1.run.app/triggerSTKPush", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            phone,
+            amount,
+            accountReference: "HijriUpdate",
+            transactionDesc: "Donation"
+          })
+        });
+
+        const data = await res.json();
+        if (!res.ok || !data.CheckoutRequestID) {
+          setProcessingState(false);
+          return showMsg("⚠ Failed to send STK Push.", true);
+        }
+
+        showMsg("STK Push sent! Check your phone.");
+        pollPaymentStatus(data.CheckoutRequestID);
+
+      } catch (err) {
+        setProcessingState(false);
+        showMsg("⚠ Network error. Try again.", true);
+      }
+    }
+
+    function pollPaymentStatus(checkoutId) {
+      pollTimer = setInterval(async () => {
+        try {
+          const res = await fetch("https://stk-service-586039397295.us-west1.run.app/query", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ id: checkoutId })
+          });
+
+          const data = await res.json();
+
+          // Success
+          if (data.ResultCode == 0 || data.status === "success") {
+            clearInterval(pollTimer);
+            clearTimeout(pollTimeout);
+            setProcessingState(false);
+            showMsg("✔ Donation received! Thank you.");
+            return;
+          }
+
+          // Failure
+          if (data.ResultCode != 0 && data.ResultDesc) {
+            clearInterval(pollTimer);
+            clearTimeout(pollTimeout);
+            setProcessingState(false);
+            showMsg("⚠ " + data.ResultDesc, true);
+            return;
+          }
+
+        } catch (e) {
+          // Ignore single polling errors
+        }
+      }, 5000);
+
+      // Timeout after 90 seconds
+      pollTimeout = setTimeout(() => {
+        clearInterval(pollTimer);
+        setProcessingState(false);
+        showMsg("⚠ Payment confirmation timed out.", true);
+      }, 90000);
+    }
+
+  </script>
 
 </body>
 
