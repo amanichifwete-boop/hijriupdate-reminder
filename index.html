@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -42,12 +41,11 @@
       transition: 0.2s;
       user-select: none;
     }
-
     .hamburger:hover {
       opacity: 0.8;
     }
 
-    /* Mobile Menu */
+    /* Mobile menu */
     .menu {
       display: none;
       background: white;
@@ -55,7 +53,6 @@
       border-bottom: 1px solid #ddd;
       animation: fadeIn 0.3s ease-in-out;
     }
-
     .menu a {
       display: block;
       padding: 12px 0;
@@ -64,7 +61,6 @@
       text-decoration: none;
       border-bottom: 1px solid #eee;
     }
-
     .menu a:last-child {
       border-bottom: none;
     }
@@ -74,25 +70,22 @@
       to { opacity: 1; }
     }
 
-    /* Hero Section */
+    /* Hero */
     .hero {
       padding: 60px 20px 30px;
       text-align: center;
     }
-
     .hero h1 {
       font-size: 32px;
       margin-bottom: 12px;
       color: #0a3d3a;
       font-weight: 700;
     }
-
     .hero p {
       font-size: 18px;
       margin: 6px 0;
       color: #444;
     }
-
     .hero strong {
       color: #0fa97d;
     }
@@ -111,7 +104,7 @@
       border: none;
       border-radius: 10px;
       background: white;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
     }
 
     /* Footer */
@@ -125,7 +118,7 @@
       margin-top: 40px;
     }
 
-    /* Donate dropdown */
+    /* Donate Dropdown */
     .donate-dropdown {
       position: relative;
       display: inline-block;
@@ -148,30 +141,27 @@
       position: absolute;
       background: white;
       min-width: 180px;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
       border-radius: 6px;
       z-index: 9999;
       overflow: hidden;
     }
-
     .donate-menu a,
     .donate-menu button {
       display: block;
       width: 100%;
       padding: 10px 14px;
-      text-align: left;
       background: white;
-      color: #222;
       border: none;
+      color: #222;
       font-size: 14px;
       cursor: pointer;
+      text-align: left;
     }
-
     .donate-menu a:hover,
     .donate-menu button:hover {
       background: #f0f0f0;
     }
-
     .donate-dropdown.open .donate-menu {
       display: block;
     }
@@ -180,8 +170,8 @@
     .mpesa-modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.55);
-      display: flex;
+      background: rgba(0,0,0,0.55);
+      display: none;
       align-items: center;
       justify-content: center;
       z-index: 20000;
@@ -193,11 +183,9 @@
       max-width: 420px;
       width: 100%;
       border-radius: 12px;
-      padding: 20px 20px 18px;
-      box-shadow: 0 20px 60px rgba(3,0,10,0.25);
+      padding: 20px;
+      box-shadow: 0 20px 60px rgba(3,10,10,0.25);
       position: relative;
-      text-align: left;
-      font-family: inherit;
     }
 
     .mpesa-close {
@@ -208,13 +196,11 @@
       background: transparent;
       font-size: 18px;
       cursor: pointer;
-      color: #666;
     }
 
     .mpesa-label {
       display: block;
       font-size: 13px;
-      color: #374151;
       margin-top: 10px;
       margin-bottom: 6px;
     }
@@ -226,36 +212,31 @@
       border: 1px solid #e6e6e6;
       font-size: 15px;
       outline: none;
-      box-sizing: border-box;
     }
-
     .mpesa-input:focus {
-      box-shadow: 0 0 0 4px rgba(6,95,70,0.06);
+      box-shadow: 0 0 0 3px rgba(6,95,70,0.10);
       border-color: #0fa97d;
     }
 
     .mpesa-message {
       min-height: 22px;
       margin-top: 10px;
-      font-weight: 600;
       font-size: 13px;
-      color: #064e3b;
       text-align: center;
     }
 
     .mpesa-pay-btn {
       width: 100%;
-      margin-top: 12px;
+      margin-top: 14px;
       background: #16A34A;
       color: #fff;
-      padding: 12px 14px;
+      padding: 12px;
       border-radius: 8px;
       border: none;
-      font-weight: 700;
       font-size: 15px;
+      font-weight: 700;
       cursor: pointer;
       display: flex;
-      align-items: center;
       justify-content: center;
       gap: 10px;
     }
@@ -267,273 +248,261 @@
       border: 2px solid rgba(255,255,255,0.35);
       border-top-color: #fff;
       animation: spin 0.85s linear infinite;
-      display: inline-block;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
 
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 26px; }
-      .hero p { font-size: 16px; }
-      iframe { height: 1250px; }
+    @media (max-width:600px){
+      .hero h1{font-size:26px;}
+      .hero p{font-size:16px;}
+      iframe{height:1250px;}
     }
   </style>
-
 </head>
 
 <body>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="logo">Hijri Update</div>
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">Hijri Update</div>
 
-    <div class="donate-dropdown" id="donateHeader" onclick="toggleDonateMenu('donateHeader')">
-      <button class="donate-btn">Donate ▾</button>
-      <div class="donate-menu">
-        <a href="https://www.paypal.com/donate/?hosted_button_id=JE95DUUDRRWVE" target="_blank">PayPal</a>
-        <a href="https://buymeacoffee.com/brotheramani" target="_blank">Buy Me a Coffee</a>
-        <button onclick="event.stopPropagation(); openMpesaModal();">M-PESA</button>
-      </div>
-    </div>
-
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-  </header>
-
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="menu">
-    <a href="https://privacy.hijriupdate.site">Privacy Policy</a>
-    <a href="#">About Us (coming soon)</a>
-  </div>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <h1>Daily Hijri Date Reminder</h1>
-    <p>Receive a clean, simple Hijri date message every morning on WhatsApp.</p>
-    <p>Delivery time: <strong>06:30 AM East Africa Time</strong></p>
-  </section>
-
-  <!-- Form -->
-  <div class="form-container">
-    <iframe
-      src="https://docs.google.com/forms/d/e/1FAIpQLSe1rIMLgd06wEatTGt3oBuSmJg6Ey582Oh2OiHawT1T5M1aUQ/viewform?embedded=true"
-      marginheight="0" marginwidth="0">Loading…</iframe>
-  </div>
-
-  <!-- Footer -->
-  <div class="footer">
-
-    <div class="donate-dropdown" id="donateFooter" onclick="toggleDonateMenu('donateFooter')">
-      <button class="donate-btn">Donate ▾</button>
-      <div class="donate-menu">
-        <a href="https://www.paypal.com/donate/?hosted_button_id=JE95DUUDRRWVE" target="_blank">PayPal</a>
-        <a href="https://buymeacoffee.com/brotheramani" target="_blank">Buy Me a Coffee</a>
-        <button onclick="event.stopPropagation(); openMpesaModal();">M-PESA</button>
-      </div>
-    </div>
-
-    <br><br>
-    © 2025 Hijri Update Live Calendar — built with Love❤️ & Powered By arts-by-amani
-  </div>
-
-  <!-- M-PESA Modal -->
-  <div id="mpesa-modal" class="mpesa-modal-backdrop" style="display:none;" aria-hidden="true">
-    <div class="mpesa-modal">
-      <button class="mpesa-close" onclick="closeMpesaModal()">✕</button>
-
-      <h2 style="text-align:center; color:#0a3d3a; margin-top:5px;">Donate via M-PESA</h2>
-      <p style="text-align:center; font-size:13px; color:#4b5563;">Enter your Safaricom number and amount.</p>
-
-      <label class="mpesa-label">M-PESA Number</label>
-      <input id="mpesa-phone" class="mpesa-input" type="tel" placeholder="0712345678">
-
-      <label class="mpesa-label">Amount (KSh)</label>
-      <input id="mpesa-amount" class="mpesa-input" type="text" placeholder="100" inputmode="numeric">
-
-      <div id="mpesa-message" class="mpesa-message"></div>
-
-      <button id="mpesa-pay-btn" class="mpesa-pay-btn" onclick="startMpesaPayment()">
-        <span id="pay-text">Click to Donate</span>
-        <span id="mpesa-spinner" class="mpesa-spinner" style="display:none;"></span>
-      </button>
-
+  <!-- Donate Dropdown -->
+  <div class="donate-dropdown" id="donateHeader" onclick="toggleDonateMenu('donateHeader')">
+    <button class="donate-btn">Donate ▾</button>
+    <div class="donate-menu">
+      <a href="https://www.paypal.com/donate/?hosted_button_id=JE95DUUDRRWVE" target="_blank">PayPal</a>
+      <a href="https://buymeacoffee.com/brotheramani" target="_blank">Buy Me a Coffee</a>
+      <button onclick="event.stopPropagation(); openMpesaModal();">M-PESA</button>
     </div>
   </div>
 
-  <!-- JS -->
-  <script>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+</header>
 
-    /* Basic menu toggles */
-    function toggleMenu() {
-      const menu = document.getElementById("mobileMenu");
-      menu.style.display = menu.style.display === "block" ? "none" : "block";
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="menu">
+  <a href="https://privacy.hijriupdate.site">Privacy Policy</a>
+  <a href="#">About Us (coming soon)</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Daily Hijri Date Reminder</h1>
+  <p>Receive a clean, simple Hijri date message every morning on WhatsApp.</p>
+  <p>Delivery time: <strong>06:30 AM East Africa Time</strong></p>
+</section>
+
+<!-- FORM -->
+<div class="form-container">
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe1rIMLgd06wEatTGt3oBuSmJg6Ey582Oh2OiHawT1T5M1aUQ/viewform?embedded=true">
+    Loading…
+  </iframe>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="donate-dropdown" id="donateFooter" onclick="toggleDonateMenu('donateFooter')">
+    <button class="donate-btn">Donate ▾</button>
+    <div class="donate-menu">
+      <a href="https://www.paypal.com/donate/?hosted_button_id=JE95DUUDRRWVE" target="_blank">PayPal</a>
+      <a href="https://buymeacoffee.com/brotheramani" target="_blank">Buy Me a Coffee</a>
+      <button onclick="event.stopPropagation(); openMpesaModal();">M-PESA</button>
+    </div>
+  </div>
+
+  <br><br>
+  © 2025 Hijri Update Live Calendar — built with Love❤️ Powered By arts-by-amani
+</div>
+
+<!-- M-PESA MODAL -->
+<div id="mpesa-modal" class="mpesa-modal-backdrop" aria-hidden="true">
+  <div class="mpesa-modal">
+    <button class="mpesa-close" onclick="closeMpesaModal()">✕</button>
+
+    <h2 style="text-align:center; color:#0a3d3a;">Donate via M-PESA</h2>
+    <p style="text-align:center; font-size:13px; color:#4b5563;">Enter your Safaricom number and amount.</p>
+
+    <label class="mpesa-label">M-PESA Number</label>
+    <input id="mpesa-phone" class="mpesa-input" type="tel" placeholder="0712345678">
+
+    <label class="mpesa-label">Amount (KSh)</label>
+    <input id="mpesa-amount" class="mpesa-input" type="text" placeholder="100" inputmode="numeric">
+
+    <div id="mpesa-message" class="mpesa-message"></div>
+
+    <button id="mpesa-pay-btn" class="mpesa-pay-btn" onclick="startMpesaPayment()">
+      <span id="pay-text">Click to Donate</span>
+      <span id="mpesa-spinner" class="mpesa-spinner" style="display:none;"></span>
+    </button>
+
+  </div>
+</div>
+
+<script>
+/* BASIC UI */
+function toggleMenu() {
+  const menu = document.getElementById("mobileMenu");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+function toggleDonateMenu(id) {
+  document.getElementById(id).classList.toggle("open");
+}
+
+/* MODAL HELPERS */
+function openMpesaModal() {
+  const m = document.getElementById("mpesa-modal");
+  m.style.display = "flex";
+  m.setAttribute("aria-hidden","false");
+  setTimeout(() => document.getElementById("mpesa-phone").focus(), 150);
+}
+
+function closeMpesaModal() {
+  const m = document.getElementById("mpesa-modal");
+  m.style.display = "none";
+  m.setAttribute("aria-hidden","true");
+  clearMpesaState();
+}
+
+function clearMpesaState() {
+  document.getElementById("mpesa-phone").value = "";
+  document.getElementById("mpesa-amount").value = "";
+  document.getElementById("mpesa-message").textContent = "";
+  document.getElementById("mpesa-spinner").style.display = "none";
+  document.getElementById("pay-text").textContent = "Click to Donate";
+  document.getElementById("mpesa-pay-btn").disabled = false;
+}
+
+/* VALIDATION */
+function validatePhone(raw) {
+  let p = raw.replace(/\s+/g,"");
+  if (p.startsWith("0") && p.length === 10) return "254"+p.slice(1);
+  if (p.startsWith("254") && p.length === 12) return p;
+  return null;
+}
+
+function validateAmount(raw) {
+  const n = parseInt(raw,10);
+  if (isNaN(n) || n < 1 || n > 500000) return null;
+  return n;
+}
+
+function setProcessingState(state) {
+  const btn = document.getElementById("mpesa-pay-btn");
+  const spin = document.getElementById("mpesa-spinner");
+  const txt = document.getElementById("pay-text");
+
+  if (state) {
+    btn.disabled = true;
+    spin.style.display = "inline-block";
+    txt.textContent = "Processing…";
+  } else {
+    btn.disabled = false;
+    spin.style.display = "none";
+    txt.textContent = "Click to Donate";
+  }
+}
+
+function showMsg(msg,isError=false){
+  const box = document.getElementById("mpesa-message");
+  box.style.color = isError ? "#b91c1c" : "#065f46";
+  box.textContent = msg;
+}
+
+/* PAYMENT */
+let pollTimer = null;
+let pollTimeout = null;
+
+async function startMpesaPayment() {
+  const phoneRaw = document.getElementById("mpesa-phone").value;
+  const amountRaw = document.getElementById("mpesa-amount").value;
+
+  const phone = validatePhone(phoneRaw);
+  if (!phone) return showMsg("⚠ Enter valid Safaricom number.",true);
+
+  const amount = validateAmount(amountRaw);
+  if (!amount) return showMsg("⚠ Enter valid amount.",true);
+
+  showMsg("");
+  setProcessingState(true);
+
+  try {
+    const res = await fetch("https://stk-service-586039397295.us-west1.run.app/triggerSTKPush", {
+      method:"POST",
+      headers:{ "Content-Type":"application/json" },
+      body: JSON.stringify({
+        phone,
+        amount,
+        accountReference: "HijriUpdate",
+        transactionDesc: "Donation"
+      })
+    });
+    const data = await res.json();
+
+    if (!res.ok || !data.CheckoutRequestID) {
+      setProcessingState(false);
+      return showMsg("⚠ Failed to send STK Push.",true);
     }
 
-    function toggleDonateMenu(id) {
-      document.getElementById(id).classList.toggle("open");
-    }
+    showMsg("STK Push sent! Check your phone.");
+    pollPaymentStatus(data.CheckoutRequestID);
 
-    /* Modal helpers */
-    function openMpesaModal() {
-      const box = document.getElementById('mpesa-modal');
-      box.style.display = 'flex';
-      box.setAttribute('aria-hidden', 'false');
-      setTimeout(() => document.getElementById('mpesa-phone').focus(), 120);
-    }
+  } catch(e){
+    setProcessingState(false);
+    showMsg("⚠ Network error.",true);
+  }
+}
 
-    function closeMpesaModal() {
-      const box = document.getElementById('mpesa-modal');
-      box.style.display = 'none';
-      box.setAttribute('aria-hidden', 'true');
-      clearMpesaState();
-    }
+function pollPaymentStatus(checkoutId){
+  pollTimer = setInterval(async()=>{
+    try{
+      const res = await fetch("https://stk-service-586039397295.us-west1.run.app/query", {
+        method:"POST",
+        headers:{ "Content-Type":"application/json" },
+        body: JSON.stringify({ id: checkoutId })
+      });
+      const data = await res.json();
 
-    function clearMpesaState() {
-      document.getElementById('mpesa-phone').value = '';
-      document.getElementById('mpesa-amount').value = '';
-      document.getElementById('mpesa-message').textContent = '';
-      document.getElementById('pay-text').textContent = 'Click to Donate';
-      document.getElementById('mpesa-spinner').style.display = 'none';
-      document.getElementById('mpesa-pay-btn').disabled = false;
-    }
-
-    /* Validation */
-    function validatePhone(raw) {
-      let p = raw.replace(/\s+/g, '');
-      if (p.startsWith("0") && p.length === 10) return "254" + p.slice(1);
-      if (p.startsWith("254") && p.length === 12) return p;
-      return null;
-    }
-
-    function validateAmount(raw) {
-      const n = parseInt(raw, 10);
-      return (isNaN(n) || n < 1 || n > 500000) ? null : n;
-    }
-
-    /* UI */
-    function setProcessingState(isProcessing) {
-      const btn = document.getElementById('mpesa-pay-btn');
-      const spinner = document.getElementById('mpesa-spinner');
-      const text = document.getElementById('pay-text');
-      if (isProcessing) {
-        btn.disabled = true;
-        spinner.style.display = 'inline-block';
-        text.textContent = 'Processing…';
-      } else {
-        btn.disabled = false;
-        spinner.style.display = 'none';
-        text.textContent = 'Click to Donate';
-      }
-    }
-
-    function showMsg(msg, isError = false) {
-      const box = document.getElementById('mpesa-message');
-      box.style.color = isError ? "#b91c1c" : "#065f46";
-      box.textContent = msg;
-    }
-
-    /* M-PESA API */
-    let pollTimer = null;
-    let pollTimeout = null;
-
-    async function startMpesaPayment() {
-      const phoneRaw = document.getElementById('mpesa-phone').value;
-      const amountRaw = document.getElementById('mpesa-amount').value;
-
-      const phone = validatePhone(phoneRaw);
-      if (!phone) return showMsg("⚠ Enter valid Safaricom number.", true);
-
-      const amount = validateAmount(amountRaw);
-      if (!amount) return showMsg("⚠ Enter valid amount (1 - 500,000).", true);
-
-      showMsg("");
-      setProcessingState(true);
-
-      try {
-        const res = await fetch("https://stk-service-586039397295.us-west1.run.app/triggerSTKPush", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            phone,
-            amount,
-            accountReference: "HijriUpdate",
-            transactionDesc: "Donation"
-          })
-        });
-
-        const data = await res.json();
-        if (!res.ok || !data.CheckoutRequestID) {
-          setProcessingState(false);
-          return showMsg("⚠ Failed to send STK Push.", true);
-        }
-
-        showMsg("STK Push sent! Check your phone.");
-        pollPaymentStatus(data.CheckoutRequestID);
-
-      } catch (err) {
-        setProcessingState(false);
-        showMsg("⚠ Network error. Try again.", true);
-      }
-    }
-
-    function pollPaymentStatus(checkoutId) {
-      pollTimer = setInterval(async () => {
-        try {
-          const res = await fetch("https://stk-service-586039397295.us-west1.run.app/query", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ id: checkoutId })
-          });
-
-          const data = await res.json();
-
-          if (data.ResultCode == 0 || data.status === "success") {
-            clearInterval(pollTimer);
-            clearTimeout(pollTimeout);
-            setProcessingState(false);
-            showMsg("✔ Donation received! Thank you.");
-            return;
-          }
-
-          if (data.ResultCode != 0 && data.ResultDesc) {
-            clearInterval(pollTimer);
-            clearTimeout(pollTimeout);
-            setProcessingState(false);
-            showMsg("⚠ " + data.ResultDesc, true);
-            return;
-          }
-
-        } catch (e) {}
-      }, 5000);
-
-      pollTimeout = setTimeout(() => {
+      if (data.ResultCode == 0 || data.status === "success") {
         clearInterval(pollTimer);
+        clearTimeout(pollTimeout);
         setProcessingState(false);
-        showMsg("⚠ Payment confirmation timed out.", true);
-      }, 90000);
-    }
-
-    /* ---------------- AUTO-OPEN M-PESA WHEN URL = #mpesa OR /donate ---------------- */
-
-    function handleDirectDonateLink() {
-      const path = window.location.pathname;
-      const hash = window.location.hash;
-
-      // /donate → open modal
-      if (path.toLowerCase() === "/donate") {
-        openMpesaModal();
-        return;
+        return showMsg("✔ Donation received! Thank you.");
       }
 
-      // #mpesa → open modal
-      if (hash.toLowerCase() === "#mpesa") {
-        openMpesaModal();
-        return;
+      if (data.ResultCode != 0 && data.ResultDesc) {
+        clearInterval(pollTimer);
+        clearTimeout(pollTimeout);
+        setProcessingState(false);
+        return showMsg("⚠ "+data.ResultDesc,true);
       }
-    }
 
-    window.onload = handleDirectDonateLink;
+    }catch(e){}
+  },5000);
 
-  </script>
+  pollTimeout = setTimeout(()=>{
+    clearInterval(pollTimer);
+    setProcessingState(false);
+    showMsg("⚠ Payment confirmation timed out.",true);
+  },90000);
+}
+
+/* AUTO OPEN HANDLERS */
+window.addEventListener("DOMContentLoaded", () => {
+  const hash = window.location.hash;
+
+  if (hash === "#donate") {
+    const dd = document.getElementById("donateHeader");
+    dd.classList.add("open");
+    dd.scrollIntoView({ behavior:"smooth", block:"center" });
+  }
+
+  if (hash === "#mpesa") {
+    openMpesaModal();
+  }
+});
+</script>
 
 </body>
 </html>
