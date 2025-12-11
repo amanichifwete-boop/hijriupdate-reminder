@@ -130,7 +130,58 @@
       margin-top: 40px;
     }
 
-    /* Mobile */
+    /* Donate dropdown */
+    .donate-dropdown {
+      position: relative;
+      display: inline-block;
+      margin-left: 10px;
+    }
+
+    .donate-btn {
+      background: #ffffff;
+      color: #0a3d3a;
+      padding: 8px 16px;
+      font-size: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .donate-menu {
+      display: none;
+      position: absolute;
+      background: white;
+      min-width: 180px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+      border-radius: 6px;
+      z-index: 9999;
+      overflow: hidden;
+    }
+
+    .donate-menu a,
+    .donate-menu button {
+      display: block;
+      width: 100%;
+      padding: 10px 14px;
+      text-align: left;
+      background: white;
+      color: #222;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .donate-menu a:hover,
+    .donate-menu button:hover {
+      background: #f0f0f0;
+    }
+
+    .donate-dropdown.open .donate-menu {
+      display: block;
+    }
+
+    /* Mobile adjustments */
     @media (max-width: 600px) {
       .hero h1 {
         font-size: 26px;
@@ -151,6 +202,10 @@
       const menu = document.getElementById("mobileMenu");
       menu.style.display = menu.style.display === "block" ? "none" : "block";
     }
+
+    function toggleDonateMenu(id) {
+      document.getElementById(id).classList.toggle("open");
+    }
   </script>
 </head>
 
@@ -159,6 +214,17 @@
   <!-- Header -->
   <header class="header">
     <div class="logo">Hijri Update</div>
+
+    <!-- Donate Dropdown (Header) -->
+    <div class="donate-dropdown" id="donateHeader" onclick="toggleDonateMenu('donateHeader')">
+      <button class="donate-btn">Donate ▾</button>
+      <div class="donate-menu">
+        <a href="https://www.paypal.com/donate/?hosted_button_id=JE95DUUDRRWVE" target="_blank">PayPal</a>
+        <a href="https://buymeacoffee.com/brotheramani" target="_blank">Buy Me a Coffee</a>
+        <button onclick="window.location.href='#mpesa-info'; event.stopPropagation();">M-PESA</button>
+      </div>
+    </div>
+
     <div class="hamburger" onclick="toggleMenu()">☰</div>
   </header>
 
@@ -179,13 +245,29 @@
   <div class="form-container">
     <iframe
       src="https://docs.google.com/forms/d/e/1FAIpQLSe1rIMLgd06wEatTGt3oBuSmJg6Ey582Oh2OiHawT1T5M1aUQ/viewform?embedded=true"
-      marginheight="0"
-      marginwidth="0">Loading…</iframe>
+      marginheight="0" marginwidth="0">Loading…</iframe>
   </div>
 
   <!-- Footer -->
   <div class="footer">
+
+    <!-- Donate Dropdown (Footer) -->
+    <div class="donate-dropdown" id="donateFooter" onclick="toggleDonateMenu('donateFooter')">
+      <button class="donate-btn">Donate ▾</button>
+      <div class="donate-menu">
+        <a href="https://www.paypal.com/donate/?hosted_button_id=JE95DUUDRRWVE" target="_blank">PayPal</a>
+        <a href="https://buymeacoffee.com/brotheramani" target="_blank">Buy Me a Coffee</a>
+        <button onclick="window.location.href='#mpesa-info'; event.stopPropagation();">M-PESA</button>
+      </div>
+    </div>
+
+    <br><br>
     © 2025 Hijri Update — built with Love❤️ & Powered By artsbyamani.com
+  </div>
+
+  <!-- M-PESA Placeholder (future modal integration) -->
+  <div id="mpesa-info" style="text-align:center; padding:40px 20px; color:#0fa97d;">
+    <strong>M-PESA donation modal coming soon…</strong>
   </div>
 
 </body>
