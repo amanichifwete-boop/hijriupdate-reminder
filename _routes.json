@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "routes": [
+    {
+      "pattern": "landing.hijriupdate.site/",
+      "serve": "/landing/index.html"
+    },
+    {
+      "pattern": "landing.hijriupdate.site/thanks",
+      "serve": "/landing/thanks.html"
+    },
+    {
+      "pattern": "landing.hijriupdate.site/*",
+      "serve": "/landing/index.html"
+    },
+    {
+      "pattern": "register.hijriupdate.site/",
+      "serve": "/register/index.html"
+    },
+    {
+      "pattern": "register.hijriupdate.site/thanks",
+      "serve": "/register/thanks.html"
+    },
+    {
+      "pattern": "register.hijriupdate.site/*",
+      "serve": "/register/index.html"
+    }
+  ]
+}
