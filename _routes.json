@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "routes": [
+    {
+      "pattern": "landing.hijriupdate.site/*",
+      "serve": "/landing/index.html"
+    }
+  ]
+}
