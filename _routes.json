@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "include": [
+    "landing.hijriupdate.site/*"
+  ],
+  "exclude": [],
+  "routes": [
+    {
+      "pattern": "landing.hijriupdate.site/*",
+      "serve": "/landing/index.html"
+    }
+  ]
+}
